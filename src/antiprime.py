@@ -20,12 +20,14 @@ def is_antiprime(n):
 
 def main(x=None):
     if x is None:
-        x = int(input("Introdueix un nombre enter positiu: "))
-    
+        try:
+            x = int(input("Introdueix un nombre enter positiu: "))
+        except ValueError:
+            print("Please provide a valid integer.")
+            return "not anti-prime"
     if x <= 0:
         print("Si us plau, introdueix un nombre enter positiu.")
-        return "not anti-prime"  # Return value if the input is invalid
-    
+        return "not anti-prime"  
     if is_antiprime(x):
         return "anti-prime"
     else:
@@ -38,10 +40,12 @@ if __name__ == "__main__":
             x = int(sys.argv[1])
             if x <= 0:
                 print("Si us plau, introdueix un nombre enter positiu.")
+                print("not anti-prime")
             else:
                 print(main(x))
         except ValueError:
             print("Please provide a valid integer.")
+            print("not anti-prime")
     else:
         print(main())
 
