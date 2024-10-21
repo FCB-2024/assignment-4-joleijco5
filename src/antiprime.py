@@ -20,7 +20,9 @@ def is_antiprime(n):
             return False
     return True
 
-def main(x):
+def main(x=None):
+    if x is None:
+        return "Usage: python script.py <positive_integer>"
     if x <= 0:
         return "not anti-prime"
     if is_antiprime(x):
@@ -31,14 +33,14 @@ def main(x):
 if __name__ == "__main__":
     import sys
     if len(sys.argv) != 2:
-        print("Usage: python script.py <positive_integer>")
+        print(main())
     else:
         try:
             x = int(sys.argv[1])
             print(main(x))
         except ValueError:
-            print("Please provide a valid integer.")
             print("not anti-prime")
+
 
 
 
