@@ -42,8 +42,7 @@ if __name__ == "__main__":
                     print("not anti-prime")
         except ValueError:
             print("Please provide a valid integer.")
-    else:
-        print(main())
+
 
 	## THE LAST LINES OF YOUR CODE SHOULD EITHER
 	## RETURN THE VALUE "anti-prime" or "not anti-prime"
