@@ -18,11 +18,14 @@ def is_antiprime(n):
             return False
     return True
 
-def main():
-    x = int(input("Introdueix un nombre enter positiu: "))
+def main(x=None):
+    if x is None:
+        x = int(input("Introdueix un nombre enter positiu: "))
+    
     if x <= 0:
         print("Si us plau, introdueix un nombre enter positiu.")
         return "not anti-prime"  # Return value if the input is invalid
+    
     if is_antiprime(x):
         return "anti-prime"
     else:
@@ -36,13 +39,11 @@ if __name__ == "__main__":
             if x <= 0:
                 print("Si us plau, introdueix un nombre enter positiu.")
             else:
-                if is_antiprime(x):
-                    print("anti-prime")
-                else:
-                    print("not anti-prime")
+                print(main(x))
         except ValueError:
             print("Please provide a valid integer.")
-
+    else:
+        print(main())
 
 	## THE LAST LINES OF YOUR CODE SHOULD EITHER
 	## RETURN THE VALUE "anti-prime" or "not anti-prime"
