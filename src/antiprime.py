@@ -4,6 +4,8 @@
 	## YOU CODE SHOULD START HERE AST THE SAME
 	## IDENTATION AS THIS COMMENT
 
+x=int(input("Escribe un numero entero positivo "))
+
 def count_divisors(n):
     count = 0
     for i in range(1, n + 1):
@@ -18,36 +20,27 @@ def is_antiprime(n):
             return False
     return True
 
-def main(x=None):
-    if x is None:
-        try:
-            x = int(input("Introdueix un nombre enter positiu: "))
-        except ValueError:
-            print("Please provide a valid integer.")
-            return "not anti-prime"
+def main(x):
     if x <= 0:
-        print("Si us plau, introdueix un nombre enter positiu.")
-        return "not anti-prime"  
+        return "not anti-prime"
     if is_antiprime(x):
-        return "anti-prime"
+        return "antiprime"
     else:
         return "not anti-prime"
 
 if __name__ == "__main__":
     import sys
-    if len(sys.argv) > 1:
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <positive_integer>")
+    else:
         try:
             x = int(sys.argv[1])
-            if x <= 0:
-                print("Si us plau, introdueix un nombre enter positiu.")
-                print("not anti-prime")
-            else:
-                print(main(x))
+            print(main(x))
         except ValueError:
             print("Please provide a valid integer.")
             print("not anti-prime")
-    else:
-        print(main())
+
+
 
 	## THE LAST LINES OF YOUR CODE SHOULD EITHER
 	## RETURN THE VALUE "anti-prime" or "not anti-prime"
@@ -64,4 +57,4 @@ if __name__ == "__main__" :
 	## $ python antiprime.py 6
 	## WHERE THE FIRST ARGUMENT IS A POSITIVE INTEGER NUMBER FOR WHICH
 	## YOU WANT TO FIGURE OUT WHETHER IS ANTI-PRIME OR NOT
-	print(main())
+    print(main(x))
