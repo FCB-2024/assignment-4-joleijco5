@@ -1,54 +1,40 @@
+import sys
+
 ## ADD WHATEVER ARGUMENTS ARE NECESSARY TO THE MAIN FUNCTION
 ## IN THE SAME ORDER AS THE ARGUMENTS ARE TAKEN FROM THE
 ## COMMAND LINE SPECIFIED BELOW
+def main() :
 	## YOU CODE SHOULD START HERE AST THE SAME
 	## IDENTATION AS THIS COMMENT
 
-x=int(input("Escribe un numero entero positivo "))
+    n = int(sys.argv[1])
 
-def count_divisors(n):
-    count = 0
-    for i in range(1, n + 1):
-        if n % i == 0:
-            count += 1
-    return count
-
-def is_antiprime(n):
-    max_divisors = count_divisors(n)
-    for i in range(1, n):
-        if count_divisors(i) >= max_divisors:
-            return False
-    return True
-
-def main(x=None):
-    if x is None:
-        return "Usage: python script.py <positive_integer>"
-    if x <= 0:
-        return "not anti-prime"
-    if is_antiprime(x):
-        return "antiprime"
-    else:
-        return "not anti-prime"
-
-if __name__ == "__main__":
-    import sys
-    if len(sys.argv) != 2:
-        print(main())
-    else:
-        try:
-            x = int(sys.argv[1])
-            print(main(x))
-        except ValueError:
-            print("not anti-prime")
-
-
-
+    def comptar_divisors(n):
+        comptador=0
+        divisor=1
+        while divisor <= n:
+            if n % divisor == 0:
+                comptador +=1
+            divisor += 1
+        return comptador
+    divisors_n = comptar_divisors(n)
+    es_antiprime = True
+    i = 1
+    while i < n:
+        if comptar_divisors(i) >= divisors_n:
+            es_antiprime = False
+            break
+        i += 1
 
 	## THE LAST LINES OF YOUR CODE SHOULD EITHER
 	## RETURN THE VALUE "anti-prime" or "not anti-prime"
 	## REPLACE THE FOLLOWING LINE BY WHATEVER LINES
 	## OF CODE ALLOW THIS FUNCTION TO RETURN THE VALUE
 	## "anti-prime" or "not anti-prime"
+    if es_antiprime:
+        return "anti-prime"
+    else:
+        return "not anti-prime"
 	
 
 ## DO NOT REMOVE THIS LINE BELOW
@@ -59,4 +45,4 @@ if __name__ == "__main__" :
 	## $ python antiprime.py 6
 	## WHERE THE FIRST ARGUMENT IS A POSITIVE INTEGER NUMBER FOR WHICH
 	## YOU WANT TO FIGURE OUT WHETHER IS ANTI-PRIME OR NOT
-    print(main(x))
+    print (main())
